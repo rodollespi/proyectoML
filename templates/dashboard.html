@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Machine Learning</h1>
+            <div class="user-info">
+                <span>Bienvenido</span>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Cerrar Sesión</a>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <h2>Menú Principal</h2>
+            
+            <div class="menu-grid">
+                <a href="/entendimiento" class ="menu-item">
+                <div class="menu-item">
+                    <div class="menu-icon"><h3>Entendimiento del negocio</h3></div>                 
+                </div>
+                </a>
+
+                <a href="/ingenieriaDeDatos" class="menu-item">
+                <div class="menu-item">
+                    <div class="menu-icon"><h3>Entendimiento e ingeniería de datos</h3></div>
+                </div>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

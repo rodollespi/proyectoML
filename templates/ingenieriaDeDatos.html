@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ingeniería de Datos</h1>
+        <p>Esta sección describe los procesos de comprensión, selección, limpieza y transformación de los datos utilizados en el proyecto.</p>
+        <h2>Comprensión de los Datos</h2>
+        <p>El conjunto de datos utilizado contiene alrededor de 5,000 imágenes clasificadas en cinco tipos de flores. Cada carpeta representa una clase, y las imágenes presentan variaciones de iluminación, fondo y forma. Estas características permitieron entrenar un modelo robusto ante la diversidad visual de los datos.</p>
+        <h2>Selección de Datos</h2>
+        <p>Las imágenes se mantuvieron completas, ya que todas se encontraban en buen estado y con una adecuada calidad visual. Se verificó que cada categoría tuviera una cantidad equilibrada de ejemplos, garantizando así una representación justa de todas las clases dentro del modelo. Este balance ayudó a evitar sesgos y a mejorar la capacidad de generalización del clasificado</p>
+        <h2>Limpieza y Transformación</h2>
+        <p>Se aplicaron procesos de normalización y escalado mediante StandardScaler para estandarizar los valores de los píxeles, mejorando la convergencia del modelo. Las imágenes se convirtieron a escala de grises y se redimensionaron a 64x64 píxeles, reduciendo la complejidad computacional sin perder información relevante.</p>
+        
+        <a href="/" >
+        <button class="btn-menu">Volver al Menú</button>
+        </a>
+    </div>
+</body>
+</html>

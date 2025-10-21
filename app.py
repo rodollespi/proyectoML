@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from functools import wraps
+import os
 
 app = Flask(__name__)
 app.secret_key = '12356789'
@@ -63,4 +64,5 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port

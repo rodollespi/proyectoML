@@ -212,10 +212,11 @@ transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 @media (max-width: 768px) {
+    
     .dashboard-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
     }
     
     .dashboard-main {
@@ -226,3 +227,4 @@ transition: background-color 0.3s ease, transform 0.2s ease;
         grid-template-columns: 1fr;
     }
 }
+ 

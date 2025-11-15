@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>  
+    <div class="container">
+        <h1>Ingeniería de modelo</h1>
+        <p>Esta sección describe el proceso de preparación de datos, selección de algoritmos, entrenamiento del modelo SVM y el ajuste de hiperparámetros para clasificar diferentes tipos de flores a partir de imágenes.</p>
+        <h2>Selección de Algoritmos</h2>
+        <p>Para este proyecto se evaluaron algoritmos clásicos de clasificación supervisada. Finalmente, se seleccionó un Máquina de Vectores de Soporte (SVM) debido a:</p>
+        <p>- Su buen desempeño en problemas de alta dimensionalidad (como imágenes convertidas a vectores).</p>
+        <p>- Su capacidad para manejar datos linealmente separables mediante el uso de un kernel lineal.</p>
+        <p>- Su eficiencia con conjuntos de datos pequeños y medianos.</p>
+        <h2>Entrenamiento del Modelo</h2>
+        <p>Para entrenar el clasificador, se realizó el siguiente flujo de trabajo:</p>
+        <h2> Carga de imágenes</h2>
+        <p>-Las imágenes se organizaron por carpetas, donde cada carpeta representa una clase de flor.</p>
+        <h2>Preprocesamiento de imágenes</h2>
+        <p>- Redimensionamiento a 64×64 píxeles.</p>
+        <p>- Conversión a escala de grises.</p>
+        <p>- Aplanamiento del arreglo para transformarlo en un vector numérico.</p>
+        <h2>Estandarización de características</h2>
+        <p>- Se aplicó StandardScaler para centralizar y normalizar los datos, mejorando la eficiencia del SVM.</p>
+        <h2>Codificación de etiquetas</h2>
+        <p>- Se utilizó LabelEncoder para convertir los nombres de las flores a valores numéricos.</p>
+        <h2>División de datos</h2>
+        <p>El conjunto de datos se dividió en:</p>
+        <p>- 80% para entrenamiento</p>
+        <p>- 20% para prueba</p>
+        <h2>Entrenamiento del modelo SVM</h2>
+        <p>El clasificador SVM se entrenó utilizando los datos preprocesados. Después, se evaluó su rendimiento con accuracy_score y un classification_report.</p>
+        <p>Finalmente, el modelo, el escalador y el codificador se guardaron en archivos .pkl mediante joblib para su uso en despliegue.</p>
+        <h2>Limpieza y Transformación</h2>
+        <p>Se aplicaron procesos de normalización y escalado mediante StandardScaler para estandarizar los valores de los píxeles, mejorando la convergencia del modelo, las imágenes se convirtieron a escala de grises y se redimensionaron a 64x64 píxeles, reduciendo la complejidad computacional sin perder información relevante.</p>
+        
+        <a href="/" >
+        <button class="btn-menu">Volver al Menú</button>
+        </a>
+    </div>
+</body>
+</html>

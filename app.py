@@ -60,6 +60,24 @@ def entendimiento():
 def ingenieriaDeDatos():
     return render_template('ingenieriaDeDatos.html')
 
+@app.route('/ingenieriaDeModelo')
+@login_required
+def ingenieriaDeModelo():
+    return render_template('ingenieriaDeModelo.html')
+
+@app.route('/evaluacionDelModelo')
+@login_required
+def evalucionDelModelo():
+    return render_template('evaluacionDelModelo.html')
+
+
+@app.route('/despliegueDelModelo')
+@login_required
+def despliegueDelModelo():
+    return render_template('despliegueDelModelo.html')
+
+
+
 
 
 @app.route('/logout')

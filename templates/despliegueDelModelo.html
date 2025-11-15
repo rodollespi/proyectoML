@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1> Despliegue del Modelo</h1>
+        <p>En esta sección se describe cómo se llevó el modelo de clasificación de flores desde el entorno local de desarrollo hasta un entorno de producción accesible mediante una aplicación web construida con Flask y desplegada en la plataforma Render.</p>
+        <h2>Implementación en Producción</h2>
+        
+        <p>Esta aplicación se encargó de:</p>
+        <p>- desplegar un sistema de login</p>
+        <p>- exploner en un menu las faces de la metodologia CRISP-ML</p>
+        <p>- exponer el modelo SVM entrenado para clasificar imágenes de flores .</p>
+        <p>- Cargar los archivos del modelo (modelo_flores_svm.pkl, scaler.pkl, encoder.pkl).</p>
+        <p>- Exponer una interfaz donde el usuario puede subir una imagen.</p>
+        <p>- Preprocesar la imagen (redimensionar, convertir a escala de grises, normalizar). </p>
+        <p>- Ejecutar la predicción con el modelo.</p>
+        <p>- Mostrar la clase de flor resultante y el nivel de confianza.</p>
+        <h2>Despliegue en Render</h2>
+        <p>Para desplegar la aplicación en Render, se siguieron estos pasos:</p>
+        <p>- El proyecto se subió a un repositorio de GitHub.</p>
+        <p>- en el proyecto se creó un archivo requirements.txt con todas las dependencias necesarias.</p>
+        <p>- Se configuró un servicio web en Render usando el plan gratuito.</p>
+        <p>- Render clonó el repositorio, instaló dependencias y levantó el servidor Flask.</p>
+        <p>- La aplicación quedó disponible mediante una URL pública.</p>
+        <a href="/" >
+        <button class="btn-menu">Volver al Menú</button>
+        </a>
+
+    </div>
+</body>
+</html>

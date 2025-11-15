@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Evaluacion del modelo</h1>
+        <p>En esta sección se detallan las métricas de desempeño, la validación cruzada y el análisis de riesgo del modelo de clasificación de flores entrenado con un SVM lineal.</p>
+        <h2>Métricas de Desempeño</h2>
+        <p>Se utilizaron métricas de clasificación para evaluar la precisión del modelo. Entre ellas:</p>
+        <p>- Exactitud : mide el porcentaje total de predicciones correctas.</p>
+        <p>- Classification : incluye precisión , sensibilidad  y F1-score para cada clase de flor.</p>
+        <h2>Validación Cruzada</h2>
+        <p>Se implementó una validación cruzada de tipo k-fold para verificar la estabilidad del modelo al entrenarse con distintos subconjuntos de los datos.</p>
+        <p>- Se utilizó un esquema de 5 pliegues (k=5).</p>
+        <p>- Esto permitió evaluar si el modelo mantiene un desempeño estable y evita sobreajuste.</p>
+        <p>- El SVM mostró un rendimiento consistente en cada iteración, confirmando su capacidad de generalización.</p>
+        <h2>Análisis de Riesgo</h2>
+        <p>Se evaluaron los riesgos potenciales del modelo en relación con la calidad de los datos y su interpretación:</p>
+        <p>- Variación en las imágenes: cambios en iluminación, resolución o enfoque pueden afectar la clasificación.</p>
+        <p>- Desbalance entre clases: si algunas carpetas contienen pocas imágenes, el modelo podría sesgarse.</p>
+        <p>- Dependencia del preprocesamiento: errores en el escalado o conversión a escala de grises pueden afectar el resultado.</p>
+        <p>- Sobreajuste: mitigado mediante validación cruzada, pero aún posible si no se amplía el dataset.</p>
+        <a href="/" >
+        <button class="btn-menu">Volver al Menú</button>
+        </a>
+
+    </div>
+</body>
+</html>

@@ -5,6 +5,10 @@ from werkzeug.utils import secure_filename
 import cv2
 import numpy as np
 import joblib
+import tensorflow as tf
+from PIL import Image
+
+
 
 app = Flask(__name__)
 app.secret_key = '12356789'
@@ -75,6 +79,54 @@ def evalucionDelModelo():
 @login_required
 def despliegueDelModelo():
     return render_template('despliegueDelModelo.html')
+
+@app.route('/clasificar_flor_cnn', methods=['GET'])
+def clasificar_flor_cnn():
+    return render_template('clasificar_flor_cnn.html')
+
+@app.route('/clasificar_cnn', methods=['POST'])
+def clasificar_cnn():
+
+    archivo = request.files['file']
+
+    imagen = Image.open(archivo).convert('RGB')
+    imagen = imagen.resize((128, 128))
+
+    imagen = np.array(imagen, dtype=np.float32)
+    imagen = np.expand_dims(imagen, axis=0)
+
+    prediccion = modelo_cnn.predict(imagen, verbose=0)
+
+    indice = np.argmax(prediccion[0])
+
+    clase = clases_cnn[indice]
+    confianza = prediccion[0][indice] * 100
+
+    return render_template(
+        'clasificar_flor_cnn.html',
+        clase=clase,
+        confianza=round(float(confianza), 2)
+    )
+
+
+CNN_MODEL_PATH = os.path.join(
+    app.root_path,
+    'models',
+    'flores_cnn.h5'
+)
+
+modelo_cnn = tf.keras.models.load_model(CNN_MODEL_PATH)
+
+
+
+clases_cnn = [
+    'daisy',
+    'dandelion',
+    'roses',
+    'sunflowers',
+    'tulips'
+]
+
 
 
 

@@ -1,86 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Dashboard</title>
-				<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-	<body>
-		<div class="dashboard-container">
-			<header class="dashboard-header">
-				<h1>Machine Learning - Clasificación flores</h1>
-				<div class="user-info">
-					<span>Bienvenido</span>
-					<a href="{{ url_for('logout') }}" class="btn-logout">Cerrar Sesión</a>
-				</div>
-			</header>
+<body>
+	<div class="dashboard-container">
+		<header class="dashboard-header">
+			<h1>Machine Learning - Clasificación flores</h1>
+			<div class="user-info">
+				<span>Bienvenido</span>
+				<a href="{{ url_for('logout') }}" class="btn-logout">Cerrar Sesión</a>
+			</div>
+		</header>
 
-			<main class="dashboard-main">
-				<h2>Menú Principal</h2>
+		<main class="dashboard-main">
+			<h2>Menú Principal</h2>
 
-				<div class="menu-grid">
-					<a href="/entendimiento" class ="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>Entendimiento del negocio</h3>
-							</div>
+			<div class="menu-grid">
+				<a href="/entendimiento" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Entendimiento del negocio</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
-					<a href="/ingenieriaDeDatos" class="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>Entendimiento e ingeniería de datos</h3>
-							</div>
+				<a href="/ingenieriaDeDatos" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Entendimiento e ingeniería de datos</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
-					<a href="/ingenieriaDeModelo" class="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>Ingenieria de modelo</h3>
-							</div>
+				<a href="/ingenieriaDeModelo" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Ingenieria de modelo</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
-					<a href="/evaluacionDelModelo" class="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>Evaluacion del modelo</h3>
-							</div>
+				<a href="/evaluacionDelModelo" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Evaluacion del modelo</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
-					<a href="/despliegueDelModelo" class="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>Despliegue del Modelo</h3>
-							</div>
+				<a href="/despliegueDelModelo" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Despliegue del Modelo</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
-
-					<a href="/clasificar_flor" class="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>Sistema de clasificacion de flores </h3>
-							</div>
+				<a href="/clasificar_flor" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Sistema de clasificacion de flores</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
-					<a href="/clasificar_flor_cnn" class="menu-item">
-						<div class="menu-item">
-							<div class="menu-icon">
-								<h3>clasifique con el modelo cnn care ¡chimba! </h3>
-							</div>
+				<a href="/clasificar_flor_cnn" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>clasifique con el modelo cnn care ¡chimba!</h3>
 						</div>
-					</a>
+					</div>
+				</a>
 
+				<a href="/entendimiento_modelo_cnn" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Entendimiento del modelo CNN</h3>
+						</div>
+					</div>
+				</a>
 
+				<a href="/ingenieria_modelo_cnn" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Ingeniería del modelo CNN</h3>
+						</div>
+					</div>
+				</a>
 
-				</div>
-			</main>
-		</div>
-	</body>
+				<a href="/evaluacion_modelo_cnn" class="menu-item">
+					<div class="menu-item">
+						<div class="menu-icon">
+							<h3>Evaluación del modelo CNN</h3>
+						</div>
+					</div>
+				</a>
+			</div>
+		</main>
+	</div>
+</body>
 </html>

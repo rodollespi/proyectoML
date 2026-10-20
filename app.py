@@ -80,6 +80,23 @@ def evalucionDelModelo():
 def despliegueDelModelo():
     return render_template('despliegueDelModelo.html')
 
+
+@app.route('/entendimiento_modelo_cnn')
+@login_required
+def entendimiento_modelo_cnn():
+    return render_template('entendimiento_modelo_cnn.html')
+
+@app.route('/ingenieria_modelo_cnn')
+@login_required
+def ingenieria_modelo_cnn():
+    return render_template('ingenieria_modelo_cnn.html')
+
+@app.route('/evaluacion_modelo_cnn')
+@login_required
+def evaluacion_modelo_cnn():
+    return render_template('evaluacion_modelo_cnn.html')
+
+
 @app.route('/clasificar_flor_cnn', methods=['GET'])
 def clasificar_flor_cnn():
     return render_template('clasificar_flor_cnn.html')

@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Entendimiento del Negocio y los Datos</h1>
-        <p>Esta sección proporciona un contexto general del proyecto, alineado con los Objetivos de Desarrollo Sostenible (ODS).</p>
-        <h2>Objetivo del Proyecto</h2>
-        <p>El objetivo principal del proyecto es desarrollar un modelo de Machine Learning capaz de identificar y clasificar imágenes de flores en diferentes categorías (daisy, dandelion, rose, sunflower y tulip), este modelo busca automatizar el proceso de reconocimiento visual, reduciendo el error humano y permitiendo una clasificación rápida y precisa.</p>
-        <h2>Contexto y Problemática</h2>
-        <p>En el ámbito de la botánica y la agricultura, la clasificación de especies florales es una tarea fundamental para estudios de biodiversidad, control de cultivos y preservación de especies tradicionalmente, este proceso requiere de especialistas y tiempo considerable, el reto surge al intentar automatizar este proceso utilizando técnicas de aprendizaje automático</p>
-        <h2>Evaluación del Procesamiento de Datos</h2>
-        <p>Durante el procesamiento, se trabajó con un conjunto de datos compuesto por imágenes de flores distribuidas en cinco carpetas, cada una correspondiente a una clase, el modelo se entrena con una parte de las imágenes y se valida con el resto, evaluando su rendimiento mediante métricas como la precisión y el reporte de clasificación, se logró una precisión significativa, lo que demuestra la capacidad del modelo SVM para reconocer patrones visuales en imágenes previamente escaladas y estandarizadas.</p>
-        <a href="/" >
-        <button class="btn-menu">Volver al Menú</button>
-        </a>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Introducción al problema, los datos visuales y la decisión de construir un clasificador de flores mediante una red neuronal convolucional."><title>Entender antes de clasificar | Atlas floral</title><style>
+:root{--bg:#071526;--bg2:#0d2238;--panel:#102b43;--line:#31506a;--text:#edf4f6;--muted:#a9c0cd;--cyan:#70d6d1;--lime:#c8e66b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Arial,Helvetica,sans-serif}
+a{color:var(--cyan);text-underline-offset:4px}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+header{position:sticky;top:0;z-index:5;background:#071526f5;border-bottom:1px solid var(--line)}nav{max-width:1160px;margin:auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{color:white;text-decoration:none;font-weight:bold}.brand b{display:inline-grid;place-items:center;border:1px solid var(--cyan);color:var(--cyan);border-radius:50%;width:36px;height:36px;margin-right:10px}
+nav .links{display:flex;gap:15px;flex-wrap:wrap}nav .links a{font-size:.83rem;color:var(--muted);text-decoration:none}nav .links a:hover,nav .links a[aria-current=page]{color:white}
+main{max-width:1160px;margin:auto;padding:0 24px 70px}.hero{margin:0 -24px 55px;padding:70px 24px 60px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 86% 30%,#22516b 0,#102b43 25%,#071526 68%);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #70d6d155;border-radius:50%;right:8%;top:50px;box-shadow:0 0 0 30px #70d6d10a,0 0 0 65px #70d6d108}
+.hero-inner{max-width:1110px;margin:auto;position:relative;z-index:1}.kicker{color:var(--cyan);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+h1,h2,h3{line-height:1.15;letter-spacing:-.03em;margin-top:0}h1{font-size:clamp(2.8rem,7vw,5.7rem);font-weight:500;max-width:850px;margin-bottom:20px}h2{font-size:clamp(1.8rem,3.5vw,2.7rem)}h3{font-size:1.2rem}
+.hero p:not(.kicker){max-width:650px;font-size:1.1rem;color:#d0e0e7}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}.chips span{border:1px solid #49677d;padding:4px 10px;font-size:.78rem}
+section{padding-bottom:42px;margin-bottom:42px;border-bottom:1px solid var(--line)}.heading{display:grid;grid-template-columns:.65fr 1.35fr;gap:25px;margin-bottom:25px}.heading p{color:var(--muted);margin:0;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.panel{background:var(--bg2);border:1px solid var(--line);padding:22px}.panel p{color:var(--muted);margin-bottom:0}.num{font-size:2rem;color:var(--cyan);margin-bottom:10px}
+.flow{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap;margin:22px 0}.step{flex:1 1 135px;background:var(--panel);border:1px solid var(--line);padding:15px}.step strong{display:block;color:var(--cyan)}.step small{color:var(--muted)}.arrow{align-self:center;color:var(--lime)}
+.callout{padding:16px 20px;background:var(--bg2);border-left:3px solid var(--lime);margin:22px 0}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}th{color:var(--cyan);background:var(--bg2)}td{color:#d4e2e8}
+figure,.figure{background:#081a2b;border:1px solid var(--line);padding:20px;margin:22px 0}figcaption,.note{color:var(--muted);font-size:.87rem}.matrix{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;max-width:330px;margin:10px auto}.matrix span{aspect-ratio:1;background:#14364e;border:1px solid #31566d}.matrix span:nth-child(3n){background:var(--cyan)}.matrix span:nth-child(5n){background:var(--lime)}
+code,pre{font-family:Consolas,monospace;color:var(--lime)}pre{white-space:pre-wrap;overflow-wrap:anywhere}.refs li{margin:12px 0;overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:25px 24px;color:var(--muted);font-size:.82rem}.foot{max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:white;color:black;padding:10px;z-index:10}
+@media(max-width:760px){.heading{grid-template-columns:1fr;gap:10px}.grid{grid-template-columns:1fr}.hero{padding-top:48px}.hero:after{right:-170px}.arrow{transform:rotate(90deg);margin:auto}table{display:block;overflow-x:auto}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a><header><nav><a class="brand" href="entendimiento.html"><b>FC</b>Atlas floral<br><small style="margin-left:48px;color:var(--muted);font-weight:normal">Clasificación con CNN</small></a><div class="links"><a href="entendimiento.html" aria-current="page">Panorama</a><a href="entendimiento_modelo_cnn.html">Fundamentos CNN</a><a href="ingenieriaDeModelo.html">Datos y proceso</a><a href="ingenieria_modelo_cnn.html">Arquitectura</a><a href="evaluacionDelModelo.html">Evaluación</a></div></nav></header>
+<main id="contenido"><section class="hero"><div class="hero-inner"><p class="kicker">01 / Panorama del proyecto</p><h1>Entender antes de clasificar</h1><p>Introducción al problema, los datos visuales y la decisión de construir un clasificador de flores mediante una red neuronal convolucional.</p><div class="chips"><span>Visión por computador</span><span>TensorFlow / Keras</span><span>Cinco categorías florales</span></div></div></section>
 
-    </div>
-</body>
-</html>
+<section><div class="heading"><h2>¿Qué intenta resolver el modelo?</h2><p>El objetivo es recibir una fotografía y asignarla a una de las categorías florales incluidas en el conjunto de datos. El sistema aprende a partir de ejemplos etiquetados, en lugar de depender de reglas escritas manualmente para cada flor.</p></div>
+<div class="grid"><article class="panel"><div class="num">01</div><h3>Una imagen como dato</h3><p>Una fotografía se representa mediante números. En una imagen RGB cada píxel contiene valores para rojo, verde y azul.</p></article><article class="panel"><div class="num">02</div><h3>Aprender patrones</h3><p>Los filtros convolucionales aprenden características visuales, desde detalles locales hasta estructuras más complejas.</p></article><article class="panel"><div class="num">03</div><h3>Asignar una clase</h3><p>La salida genera una puntuación normalizada por clase y la predicción selecciona la de mayor valor.</p></article></div></section>
+<section><div class="heading"><h2>Las cinco categorías</h2><p>El código toma las etiquetas de las carpetas del dataset. Las clases utilizadas en este proyecto son las siguientes; su orden definitivo depende de <code>dataset.class_names</code>.</p></div>
+<div class="flow"><div class="step"><strong>Daisy</strong><small>Margarita</small></div><div class="step"><strong>Dandelion</strong><small>Diente de león</small></div><div class="step"><strong>Roses</strong><small>Rosas</small></div><div class="step"><strong>Sunflowers</strong><small>Girasoles</small></div><div class="step"><strong>Tulips</strong><small>Tulipanes</small></div></div>
+<p class="note">Se conservan las etiquetas en inglés porque proceden de los nombres de clase del código.</p></section>
+<section><div class="heading"><h2>Del archivo a la predicción</h2><p>La clasificación no compara necesariamente la fotografía con una imagen idéntica. El modelo transforma la entrada y usa parámetros aprendidos durante el entrenamiento para estimar la categoría.</p></div>
+<div class="flow"><div class="step"><strong>Imagen</strong><small>Fotografía RGB</small></div><span class="arrow">→</span><div class="step"><strong>Preparación</strong><small>128 × 128 y normalización</small></div><span class="arrow">→</span><div class="step"><strong>CNN</strong><small>Convolución y pooling</small></div><span class="arrow">→</span><div class="step"><strong>Salida</strong><small>Puntuaciones por clase</small></div></div>
+<div class="callout"><strong>Alcance:</strong> una predicción es una estimación, no una garantía de identificación correcta. Su fiabilidad debe comprobarse con datos que no se hayan utilizado para ajustar los pesos.</div></section>
+<section><div class="heading"><h2>Qué sabemos y qué falta medir</h2><p>La documentación separa las decisiones verificables del código de los resultados que solo pueden afirmarse después de ejecutar el entrenamiento.</p></div>
+<table><thead><tr><th>Elemento</th><th>Información del código</th><th>Estado</th></tr></thead><tbody><tr><td>Entrada</td><td>128 × 128 píxeles, 3 canales RGB</td><td>Definido</td></tr><tr><td>Entrenamiento</td><td>30 épocas, lotes de 32 imágenes</td><td>Definido</td></tr><tr><td>Arquitectura</td><td>Tres capas Conv2D y tres MaxPooling2D</td><td>Definido</td></tr><tr><td>Accuracy y loss finales</td><td>No hay valores medidos en la información disponible</td><td>Por completar</td></tr><tr><td>Matriz de confusión y F1</td><td>Requieren predicciones y etiquetas reales</td><td>Por calcular</td></tr></tbody></table></section>
+<section><div class="heading"><h2>Referencias</h2><p>La explicación combina las decisiones implementadas en el proyecto con documentación técnica externa.</p></div><ol class="refs"><li>ISDI. (2024). <em>Redes neuronales convolucionales (CNN): características y usos.</em> <a href="https://www.isdi.education/es/blog/redes-neuronales-convolucionales" target="_blank" rel="noopener">Leer artículo</a>.</li><li>Keras. <em>Image data loading.</em> <a href="https://keras.io/preprocessing/image/" target="_blank" rel="noopener">Documentación oficial</a>.</li></ol><p class="note">La redacción del proyecto se toma como base conceptual y se complementa con fuentes externas. Las afirmaciones sobre resultados deben apoyarse en métricas obtenidas al ejecutar el modelo.</p></section>
+
+<p><a href="#contenido">Volver al inicio ↑</a></p></main><footer><div class="foot"><span>Atlas floral · Proyecto académico de clasificación de imágenes</span><span>Explicaciones técnicas y referencias citadas</span></div></footer>
+<script>document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){var e=document.querySelector(a.getAttribute('href'));if(e){e.setAttribute('tabindex','-1');e.focus({preventScroll:true});}})});</script></body></html>
